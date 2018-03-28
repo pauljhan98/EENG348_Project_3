@@ -26,7 +26,19 @@ void loop() {
   Serial.println(adjusted_voltage);
 
   analogWrite(red_pin, adjusted_voltage);  // Output voltage to power RGB LED
+  delay(1000);
 
 
 
 }
+
+//Implementing AnalogRead() using I/O Registers 
+/*
+        We first set which psin the ADC will read from using the ADMUX register.Bits 3:0 set which pin, and A0 is set by 0000.
+   The ADC is started by writing 0 to the "Power Reduction ADC bit in the Power Reduction
+Register (PRR.PRADC), and writing a '1' to the ADC Start Conversion bit in the ADC Control and Status
+Register A (ADCSRA.ADSC)." We can determine when the ADC is finished by polling the ADSC bit, once the ADC has completed
+the operation, it will go back to 0. Once it has gone back to zero we can read the 10-bit result from reading ADCL, which has the 
+lower 8 bits, and ADCH, which has the upper 2 bits. We can discard bits 2-7 in ADCH.
+
+*/
