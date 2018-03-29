@@ -36,3 +36,14 @@ void loop() {
 
   Serial.print("Output voltage: ");      // for debugging; output the voltage value [0,255].
   Serial.println(output_voltage);
+
+  
+  
+
+  
+
+
+  analogWrite(red_pin, output_voltage);
+  delay(1000);                            //delay program by one second
+
+}
